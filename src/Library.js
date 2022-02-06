@@ -110,6 +110,39 @@ function addBook(library, book) {
 // }
 
 //checkoutBook
+//Final problem!
+//It feels like there's a lot going on. What do I know from looking at the test doc?
+  //It will unshelf a book (should remove it from the shelf)
+  //This function will also use the createLibrary and addBook functions (lines 100 & 102-104)
+  //The checkout book should have three parameters as seen on lines 106 & 111
+  //The first parameter is a library object, the second is book title as a string,
+  //and the third is the book genre as a string (this is the same as the shelf name)
+  //When the test runs to see if my code is correct, it will be looking at the shelf
+  //contents in my library object - looking to see if the books were removed from
+  //the shelves correctly (lines 108 & 113)
+  //It will ALSO be checking to see if a specific string was returned confirming
+  //that the book was checked out
+
+//My logic:
+  //I will need a for loop to iterate through each genre shelf in the library object
+  //and check to see if the book title passed in as the second argument is on the shelf
+  //If (if statement) that book string is equal to an element in the specific shelf array,
+  //Then, we need to remove that book from the array using a method
+  //The if statement should also return the string confirming that the book was checked out
+
+//I began with a for statement where the stop condtion is when we've run through each
+//of the genre arrays
+//I used bracket notation to do this: library.shelves[genre].length
+//In my if statement, I am trying to make sure that two things are equal:
+  //the element in each genre array that we are at in our specific iteration (a string),
+  //and the title of the book that was fed into my function as an argument
+//IF the condition in my if statement evaluates to true, then I want to remove that
+//title from the array
+//I did this using the splice method (i is the current iteration, so the element to remove)
+//I also had to return the interpolated or concatenated statement that returns the
+//confirmation that the book was spliced or checked out
+//I was getting an error at first because I forgot that I needed the .name on library
+//to accurately print the library's string name, and not the entire object name
 function checkoutBook(library, book, genre) {
   for (var i = 0; i < library.shelves[genre].length; i++) {
     if (library.shelves[genre][i].title === book) {
@@ -118,11 +151,19 @@ function checkoutBook(library, book, genre) {
   }
  }
  return `Sorry, there are currently no copies of ${book} available at the ${library.name}`;
-}
+};
+
+//When I needed to finish the second part of this checkoutBook function, I just decided
+//to add another return statement that would run if the if statement did not evaluate
+//to true
+//I tied to put this inside the for loop the first time I ran it, but that gave me
+//an error
+//After moving the second return to outside of the for loop it worked!
 
 
-//Ohter code blocks I tried with no luck
-//Could any of these be refactored to actually work?
+//I tried a few different ways to get to this same solution with no luck, but I would
+//love to look through them again in a week or with a mentor to see if I could refactor
+//and of them to eventually work?
 
 // function checkoutBook(library, book, genre) {
 //   if (book != library.shelves[genre][0].title) {
