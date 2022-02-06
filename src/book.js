@@ -38,9 +38,9 @@ function buildMainCharacter(name, age, pronouns) {
 //be first and will be a string, and the review arrays will be second
 //I added these parameters to my function
 
-//My original code did not have any for statement, as I was just adding reviews,
+//My original code did not have any 'for' statement, as I was just adding reviews,
 //not checking to see if they were repetitive
-//So:
+//So my origianl function:
 // function saveReview(newReview, reviews) {
 //   return reviews.push(newReview)
 // }
@@ -59,21 +59,49 @@ function saveReview(newReview, reviews) {
   }
 };
 
+//calculatePageCount
+//First, I made an empty function just called calculatePageCount
+//Then, I new that I would need to take in the bootTitle argument
+//so that I have something to count the letters in
+//Lines 98 and 105 of the test document show me that this should be my only parameter
+//To do this, I made a new variable setting bookPageCount equal to the length of the bookTitle
+//(number of characters in the title) multiplied by 20
+//I then returned the page count
+//I'm going to try to refactor this function below my orginial to return a
+//value without first declaring a variable
+
+// function calculatePageCount(bookTitle) {
+//   var bookPageCount = (bookTitle.length * 20);
+//   return bookPageCount;
+// };
 
 function calculatePageCount(bookTitle) {
-  var bookPageCount = (bookTitle.length * 20);
-  return bookPageCount;
+  return (bookTitle.length * 20);
 };
+//Sweet! This new function still works, just does it in a simpler way!
 
-// // function writeBook() {
-//   return book = {
-//
-//   }
-// // }
+//writeBook
+//As with the other functions so far, I started by just opening up an empty
+//writeBook function and testing that
+//Then, I looked at the test document line 119 to see what parameters my
+//function will need to take in (bookTitle, bookCharacter, and a string that equals the genre)
+//Lines 121-124 of the test document show my that to pass this test, the function will need
+//to return correct values for four different key/value pairs in a book object
+//These pairs: (title, mainCharacter, pageCount, and genre)
 
-//can write var book = {object}, but more concise to jsut write return
+//After determining this, I made a book object, and opened it up giving it these keys
+//Now, I keep referencing the test document to see what my values should be
+//title = bookTitle as defined on test document line 117
+//mainCharacter = bookCharacter as defined on test document line 118
+//pageCount = the calculatePageCount function that I defined earlier in my code
+//genre = the genre string passed into the function as an argument
+
+//Originally, I used var bookObject = {}, then returned bookObject at the end
+//of my function
+//I changed this as I refactored to just return bookObject from the start,
+//getting rid of the var keyword
 function writeBook(bookTitle, bookCharacter, genre) {
-  return {
+  return bookObject = {
     title: bookTitle,
     mainCharacter: bookCharacter,
     pageCount: calculatePageCount(bookTitle),
@@ -81,15 +109,38 @@ function writeBook(bookTitle, bookCharacter, genre) {
   }
 };
 
-//Edit book
+//editBook
+//First, I returned an empty editBook function
 
+//Line 151 of the test document lets me know that my function should have one parameter
+//equal to the book that the function is taking in
+//Then I need to reassign the book.pageCount key to equal three quarters of itself
+//I did this with book.pageCount = book.pageCount*0.75
+
+//I had some trouble getting this one to pass, and my mentor gave me a great tip
+//For example: this is what I was trying to pas before:
 // function editBook(book) {
 //   return ((book.pageCount)*0.75);
 // };
 
+//He gave me the hint that I am not actually returning anything from this function,
+//I am just trying to reassign or edit an existing value
+//When the test document tests to see if my function is corect, they are
+//doing so on line 153 - checking to see if the pageCount key of my book has been edited
+
 function editBook(book) {
   book.pageCount = book.pageCount*0.75;
 };
+
+
+//In general, I feel okay about this book.js section
+//It got a lot easier when I did two things
+  //1. Figured out what the test document was exactly asking for and testing
+  //as well as learned how to read the test a bit better.
+  //I still need a lot of practice deciphering the tests though!
+
+  //2. I explicitly typed out what logic I was trying to accomplish in simple language
+  //before trying to figure out how to write this logic as code.
 
 module.exports = {
   createTitle,
