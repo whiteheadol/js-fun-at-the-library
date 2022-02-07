@@ -21,9 +21,10 @@
 //The next test says that my library object should have shelves
 //What else does the test say?
   //Line 30 of the test shows me that shelves will be another key inside of my
-  //library object (dot notation!)
-  //I added shelves, but I also made it an object because I will need to store other
-  //key/value pairs inside of it (specifically, the different genres will be different keys)
+  //library object (dot notation!), but the isObject is also telling me that
+  //shelves itself is an object
+  //I added shelves, adn for the keys in its key/value pairs I gave it different
+  //shelf names
   //I added these different shelves based on lines 36-38 of the test doc because
   //that looks like how it will test if my next part of the function is correct
   //At the moment, I have each shelf key set to an empty array because lines 36-38
@@ -98,7 +99,7 @@ function addBook(library, book) {
 //I could just add it using this notation, I don't need to check externally
 // function addBook(library, book) {
 //   if (book.genre === library.shelves[book.genre]) {
-//     library.shelves[book.genre].push(book);
+//     library.shelves[book.genre].push(book)
 //   }
 // };
 
